@@ -15,8 +15,8 @@ pipeline
                     success
                     {
                         echo 'now archaiving............'
-                        archiveArtifacts artifacts : '.war'
-                         
+                        archiveArtifacts artifacts : '**/*.war'
+                        
                     }
                 }
             }
