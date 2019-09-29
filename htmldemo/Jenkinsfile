@@ -4,11 +4,19 @@ pipeline
     {
         stages
         {
-            stage('initializtaion')
+            stage('build')
             {
                 steps
                 {
-                    build : 'mvn -f htmldemo/pom.xml clean install'
+                    bat : 'mvn -f htmldemo/pom.xml clean install'
+                }
+                post
+                {
+                    success
+                    {
+                        echo 'now archaiving............'
+                        archiveArtifacts artifacts : '**/*.war'
+                    }
                 }
             }
         }
